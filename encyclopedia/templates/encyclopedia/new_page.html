@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+<h1>New Page </h1>
+<form action="{% url 'new_page' %}" method="post">
+    {% csrf_token %}
+    <p>Enter the title and content for the new page:</p>    
+    <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1"><b>Title : </b></button>
+        <input type="text" class="form-control" name="title"  placeholder="Enter the title of the entry"
+            aria-label="Example text with button addon" aria-describedby="button-addon1">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label"><b>Markdown Content :</b></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content" placeholder="#title" ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    
+</form>
+{% endblock %}

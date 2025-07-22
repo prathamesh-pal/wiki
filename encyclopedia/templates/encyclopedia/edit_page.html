@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }} - Edit Page
+{% endblock %}
+
+{% block body %}
+<h1>Edit Page</h1>
+<form action="{% url 'edit_page' title=title %}" method="post">
+    {% csrf_token %}
+    <p>Modify the content of the page:</p>
+    <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1"><b>Title : </b></button>
+        <input type="text" class="form-control" name="title" value="{{ title }}"
+            placeholder="Enter the title of the entry"
+            aria-label="Example text with button addon" aria-describedby="button-addon1">
+    </div> 
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label"><b>Markdown Content :</b></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="content" placeholder="# Title...">{{ content }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
